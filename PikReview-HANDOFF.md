@@ -140,3 +140,64 @@ Phase 0 — project fork and rename only. Do not start Phase 1 in this session.
 ### Next Step
 
 - Commit the Phase 0 baseline and push to GitHub `main`.
+
+## 2026-06-25 — Push Checkpoint
+
+### Completed
+
+- Created initial Phase 0 commit: `65e51dfa5b1cce9f01ac2d08e7a556f080aed5ca`.
+- Pushed `main` to `git@github.com:mickyyang-1407/pik-review-player.git`.
+- Local `main` now tracks `origin/main`.
+
+### Test / Build Results
+
+- `npm install`: PASS.
+- `npm run build`: PASS.
+- `npm run tauri build -- --bundles app`: PASS.
+- Forbidden native video regression scan: PASS.
+
+### Next Step
+
+- Update `/Users/mickyyang/STATUS.md`, commit the final handoff/status-doc changes, and push again.
+
+## 2026-06-25 — Final Phase 0 Handoff Checkpoint
+
+### Completed
+
+- Updated `/Users/mickyyang/STATUS.md` with the Pik Review Phase 0 status block.
+- Confirmed the GitHub remote is `git@github.com:mickyyang-1407/pik-review-player.git`.
+- Confirmed Phase 0 is complete and Phase 1 has not been started.
+
+### Final Phase 0 Results
+
+- New folder: `/Users/mickyyang/Projects/pik-review-player`.
+- Source project safety: `/Users/mickyyang/Projects/pik-player` remained clean and unmodified.
+- Fresh git repo: `/Users/mickyyang/Projects/pik-review-player/.git` was initialized locally, not copied from Pik Player.
+- GitHub repo: `git@github.com:mickyyang-1407/pik-review-player.git`.
+- App name: `Pik Review`.
+- Bundle id: `com.mickydigitalstudio.pikreview`.
+- Rust crate / binary: `pik-review`.
+- App data isolation: Tauri identifier, `pik-review-library.db`, and `pik-review/covers` are separated from Pik Player.
+- Built app: `src-tauri/target/release/bundle/macos/Pik Review.app`.
+
+### Verification
+
+- `npm install`: PASS.
+- `npm run build`: PASS.
+- `npm run tauri build -- --bundles app`: PASS.
+- Source regression scan: PASS; no forbidden native video attachment symbols found.
+- Binary string regression scan: PASS for project-side forbidden symbols.
+
+### Laptop / M4 Continuation
+
+```bash
+git clone git@github.com:mickyyang-1407/pik-review-player.git
+cd pik-review-player
+npm install
+npm run build
+npm run tauri build -- --bundles app
+```
+
+### Next Recommended Step
+
+- Start Phase 1 only after reading `PikReview-PLAN.md` and `PikReview-TASKS.md`: build the Review shell UI while preserving the current audio-only playback foundation and avoiding `AVPlayerView`, `AVPlayerLayer`, `ns_window`, `content_view_ptr`, `get_webview_window`, and `AVKit`.

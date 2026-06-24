@@ -16,8 +16,8 @@
 | DONE | Verify Tauri app build | `npm run tauri build -- --bundles app` succeeded; app at `src-tauri/target/release/bundle/macos/Pik Review.app`. |
 | DONE | Check native video regressions | Source and app binary scans found no `AVPlayerView`, `AVPlayerLayer`, `ns_window`, `content_view_ptr`, `get_webview_window`, or `AVKit`. |
 | DONE | Create private GitHub repo | Micky created private GitHub repo `pik-review-player`. |
-| TODO | Push to GitHub | Push `main` after Phase 0 commit. |
-| BLOCKED | Update global status | Waiting for permission to write `/Users/mickyyang/STATUS.md` outside the workspace. |
+| DONE | Push to GitHub | Pushed `main` to `git@github.com:mickyyang-1407/pik-review-player.git`; commit `65e51dfa5b1cce9f01ac2d08e7a556f080aed5ca`. |
+| DONE | Update global status | Updated `/Users/mickyyang/STATUS.md` with Phase 0 results and laptop handoff notes. |
 
 ## Future Planning Only — Do Not Implement In Phase 0
 
