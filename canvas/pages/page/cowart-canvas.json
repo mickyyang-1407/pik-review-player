@@ -1,0 +1,1020 @@
+{
+  "schema": {
+    "schemaVersion": 2,
+    "sequences": {
+      "com.tldraw.store": 5,
+      "com.tldraw.asset": 1,
+      "com.tldraw.camera": 1,
+      "com.tldraw.document": 2,
+      "com.tldraw.instance": 26,
+      "com.tldraw.instance_page_state": 5,
+      "com.tldraw.page": 1,
+      "com.tldraw.instance_presence": 6,
+      "com.tldraw.pointer": 1,
+      "com.tldraw.shape": 4,
+      "com.tldraw.user": 1,
+      "com.tldraw.asset.image": 6,
+      "com.tldraw.asset.video": 5,
+      "com.tldraw.asset.bookmark": 2,
+      "com.tldraw.shape.group": 0,
+      "com.tldraw.shape.text": 4,
+      "com.tldraw.shape.bookmark": 2,
+      "com.tldraw.shape.draw": 4,
+      "com.tldraw.shape.geo": 11,
+      "com.tldraw.shape.note": 12,
+      "com.tldraw.shape.line": 5,
+      "com.tldraw.shape.frame": 1,
+      "com.tldraw.shape.arrow": 8,
+      "com.tldraw.shape.highlight": 3,
+      "com.tldraw.shape.embed": 4,
+      "com.tldraw.shape.image": 5,
+      "com.tldraw.shape.video": 4,
+      "com.tldraw.binding.arrow": 1
+    }
+  },
+  "store": {
+    "shape:nBaooEtbG3V8Gt9h4wcg0": {
+      "x": 1249.328125,
+      "y": 273.56640625,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:nBaooEtbG3V8Gt9h4wcg0",
+      "type": "geo",
+      "props": {
+        "w": 506.88671874999994,
+        "h": 773.2890625,
+        "geo": "rectangle",
+        "dash": "draw",
+        "growY": 0,
+        "url": "",
+        "scale": 1,
+        "color": "red",
+        "labelColor": "black",
+        "fill": "none",
+        "size": "m",
+        "font": "draw",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a4UwbDSl",
+      "typeName": "shape"
+    },
+    "shape:ftF_WB7_4AoUMOBjz8aJ9": {
+      "x": 466.0078125,
+      "y": 254.01171875,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:ftF_WB7_4AoUMOBjz8aJ9",
+      "type": "image",
+      "props": {
+        "w": 1284,
+        "h": 851,
+        "assetId": "asset:1331269167",
+        "playing": true,
+        "url": "",
+        "crop": null,
+        "flipX": false,
+        "flipY": false,
+        "altText": ""
+      },
+      "parentId": "page:page",
+      "index": "a1PG0XpV",
+      "typeName": "shape"
+    },
+    "shape:Ael2DvdRpL5gIc4SerzOq": {
+      "x": 1509.40234375,
+      "y": 688.15625,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:Ael2DvdRpL5gIc4SerzOq",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "red",
+        "labelColor": "red",
+        "bend": -48,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": 460.27734375,
+          "y": -5.1875
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "a2gu524V",
+      "typeName": "shape"
+    },
+    "shape:JbG6975mpB3gvFJwKFhVH": {
+      "x": 881.359375,
+      "y": 373.01171875,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:JbG6975mpB3gvFJwKFhVH",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "green",
+        "labelColor": "green",
+        "bend": -48,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": 892.1796875,
+          "y": -189.171875
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "aJsm1UYG",
+      "typeName": "shape"
+    },
+    "asset:1331269167": {
+      "id": "asset:1331269167",
+      "type": "image",
+      "typeName": "asset",
+      "props": {
+        "name": "Screenshot-2026-06-23-at-20.10.32.png",
+        "src": "/page-assets/page/Screenshot-2026-06-23-at-20.10.32.png",
+        "w": 1284,
+        "h": 851,
+        "fileSize": 2891449,
+        "mimeType": "image/png",
+        "isAnimated": false,
+        "pixelRatio": 2
+      },
+      "meta": {}
+    },
+    "shape:lDzOnk1ovsItBQtwwPMjY": {
+      "x": 1785.909759281034,
+      "y": 706.5703125,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:lDzOnk1ovsItBQtwwPMjY",
+      "type": "text",
+      "props": {
+        "color": "black",
+        "size": "m",
+        "w": 733.2207172575976,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 0.9269175108538349,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 1,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "封面，一打開會跳超大出來，嚇死人"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "然後我按了左上角的XX，歌曲就停止"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "然後就再也無法播歌，import新的歌曲進來也無法播放，就是死掉了"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "這個是超級大bug，一定要修復"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "這個封面圖，我希望不要跳出來，沒必要，在歌曲上就好"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a3LzGaal",
+      "typeName": "shape"
+    },
+    "shape:nY9TtbjhKR22n2sj7AocX": {
+      "x": 527.8828125,
+      "y": 423,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:nY9TtbjhKR22n2sj7AocX",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "red",
+        "labelColor": "red",
+        "bend": 33.37754738786099,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": -283.85546875,
+          "y": -185.484375
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "aIThSfUG",
+      "typeName": "shape"
+    },
+    "shape:taMWaQIdF31BhJRhiRPby": {
+      "x": 664.27734375,
+      "y": 1089.48046875,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:taMWaQIdF31BhJRhiRPby",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "red",
+        "labelColor": "red",
+        "bend": 22.252828148253496,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": -174.76171875,
+          "y": 62.01953125
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "aLohGVIV",
+      "typeName": "shape"
+    },
+    "user:IpvCZKxeMEK09h2FelBym": {
+      "name": "",
+      "color": "#E34BA9",
+      "imageUrl": "",
+      "meta": {},
+      "id": "user:IpvCZKxeMEK09h2FelBym",
+      "typeName": "user"
+    },
+    "shape:QLxEDqou54c6eMvN_MVyF": {
+      "x": 37.90234375,
+      "y": 193.94921875,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:QLxEDqou54c6eMvN_MVyF",
+      "type": "text",
+      "props": {
+        "color": "black",
+        "size": "m",
+        "w": 955.453125,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 1,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 8,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "這個功能，在Apple Music是放在上方工具列，我買需要放在這裡嗎？需要你的意見"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "aEklrrVV",
+      "typeName": "shape"
+    },
+    "shape:ipFqtu84M6pkEAKN9u_tl": {
+      "x": 428.93359375,
+      "y": 234.3359375,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:ipFqtu84M6pkEAKN9u_tl",
+      "type": "geo",
+      "props": {
+        "w": 1347.5664062499998,
+        "h": 888.37109375,
+        "geo": "rectangle",
+        "dash": "draw",
+        "growY": 0,
+        "url": "",
+        "scale": 1,
+        "color": "green",
+        "labelColor": "black",
+        "fill": "none",
+        "size": "m",
+        "font": "draw",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a4UzmFryq",
+      "typeName": "shape"
+    },
+    "shape:ZwVc0d30ojcnEqZbvRlfu": {
+      "x": 899.8828125,
+      "y": 616.2890625,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:ZwVc0d30ojcnEqZbvRlfu",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "red",
+        "labelColor": "red",
+        "bend": -48,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": 947.59375,
+          "y": -163.14453125
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "a4Uzv5BwOh",
+      "typeName": "shape"
+    },
+    "shape:0-rUiIe6InjfMsnnK6LMN": {
+      "x": 482.23828125,
+      "y": 1039.9453125,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:0-rUiIe6InjfMsnnK6LMN",
+      "type": "geo",
+      "props": {
+        "w": 372.1757812499998,
+        "h": 68.26171875,
+        "geo": "rectangle",
+        "dash": "draw",
+        "growY": 0,
+        "url": "",
+        "scale": 1,
+        "color": "red",
+        "labelColor": "black",
+        "fill": "none",
+        "size": "m",
+        "font": "draw",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "aKCEut9V",
+      "typeName": "shape"
+    },
+    "shape:qWq2IWB0E3HeDt0ll1Fz_": {
+      "x": 406.9453125,
+      "y": 1170.234375,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:qWq2IWB0E3HeDt0ll1Fz_",
+      "type": "text",
+      "props": {
+        "color": "black",
+        "size": "m",
+        "w": 345.78125,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 1,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 9,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "曲名要跑馬燈，需要有封面"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "aCjpdfPV",
+      "typeName": "shape"
+    },
+    "shape:N_lpuEWpeJYKWqUBBpgQa": {
+      "x": 482.3203125,
+      "y": 360.61328125,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:N_lpuEWpeJYKWqUBBpgQa",
+      "type": "geo",
+      "props": {
+        "w": 224.69921874999997,
+        "h": 103.78906250000001,
+        "geo": "rectangle",
+        "dash": "draw",
+        "growY": 0,
+        "url": "",
+        "scale": 1,
+        "color": "red",
+        "labelColor": "black",
+        "fill": "none",
+        "size": "m",
+        "font": "draw",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a4VlszD4G",
+      "typeName": "shape"
+    },
+    "shape:H_8V0MglGGqNvoJ6IYQmV": {
+      "x": 1767.73046875,
+      "y": 480.828125,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:H_8V0MglGGqNvoJ6IYQmV",
+      "type": "text",
+      "props": {
+        "color": "black",
+        "size": "m",
+        "w": 637.53125,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 1,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 4,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "沒有封面圖，希望封面圖是在這裡，而不是跳出來嚇人"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a68xLuTV",
+      "typeName": "shape"
+    },
+    "page:page": {
+      "meta": {},
+      "id": "page:page",
+      "name": "Page 1",
+      "index": "a1",
+      "typeName": "page"
+    },
+    "document:document": {
+      "gridSize": 10,
+      "name": "",
+      "meta": {},
+      "id": "document:document",
+      "typeName": "document"
+    },
+    "shape:kc9bzE5U1Yo_67Sekzu2Y": {
+      "x": 1474.31640625,
+      "y": 1055.3828125,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:kc9bzE5U1Yo_67Sekzu2Y",
+      "type": "geo",
+      "props": {
+        "w": 227.11718749999977,
+        "h": 38.2890625,
+        "geo": "rectangle",
+        "dash": "draw",
+        "growY": 0,
+        "url": "",
+        "scale": 1,
+        "color": "red",
+        "labelColor": "black",
+        "fill": "none",
+        "size": "m",
+        "font": "draw",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a4qCURIp",
+      "typeName": "shape"
+    },
+    "shape:fZk9dIzxFTWrGnUREsX31": {
+      "x": 1640.9609375,
+      "y": 1132.41015625,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:fZk9dIzxFTWrGnUREsX31",
+      "type": "text",
+      "props": {
+        "color": "black",
+        "size": "m",
+        "w": 747.46875,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 1,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 5,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "EQ亮燈，但不知道代表什麼意義"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "音量bar，要有刻度，預設100，可以用拉的，也可以直接打數值"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "a8h8pWUG",
+      "typeName": "shape"
+    },
+    "shape:odpHuRnjGsD_8d46cM_Nj": {
+      "x": 1788.1796875,
+      "y": 161.40234375,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:odpHuRnjGsD_8d46cM_Nj",
+      "type": "text",
+      "props": {
+        "color": "green",
+        "size": "m",
+        "w": 272.84375,
+        "font": "draw",
+        "textAlign": "start",
+        "autoSize": true,
+        "scale": 1,
+        "richText": {
+          "type": "doc",
+          "attrs": {
+            "dir": "auto"
+          },
+          "content": [
+            {
+              "type": "orderedList",
+              "attrs": {
+                "dir": "auto",
+                "start": 7,
+                "type": null
+              },
+              "content": [
+                {
+                  "type": "listItem",
+                  "attrs": {
+                    "dir": "auto"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "dir": "auto"
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "分割線再亮一些？？"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parentId": "page:page",
+      "index": "aGzJqFaG",
+      "typeName": "shape"
+    },
+    "shape:srBie97ggFgiyKIQYUKfT": {
+      "x": 1661.55859375,
+      "y": 1078.6484375,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {
+        "cowartAnnotationArrow": true
+      },
+      "id": "shape:srBie97ggFgiyKIQYUKfT",
+      "type": "arrow",
+      "props": {
+        "kind": "arc",
+        "elbowMidPoint": 0.5,
+        "dash": "draw",
+        "size": "m",
+        "fill": "none",
+        "color": "red",
+        "labelColor": "red",
+        "bend": -41.05568730407233,
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": 212.19140625,
+          "y": 49.13671875
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "richText": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "labelPosition": 0,
+        "font": "draw",
+        "scale": 1
+      },
+      "parentId": "page:page",
+      "index": "a78aQ8RV",
+      "typeName": "shape"
+    }
+  }
+}

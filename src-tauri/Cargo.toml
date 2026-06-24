@@ -1,0 +1,52 @@
+[package]
+name = "pik-review"
+version = "0.1.0"
+description = "Pik Review – professional mix review player"
+authors = ["Micky Yang"]
+edition = "2021"
+
+[lib]
+name = "pik_review_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "pik-review"
+path = "src/main.rs"
+
+[build-dependencies]
+cc = "1.2.65"
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-ico", "image-png", "protocol-asset"] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+notify = { version = "7", features = ["macos_kqueue"] }
+mpv = "0.2"
+lofty = "0.21"
+objc2 = { version = "0.6" }
+objc2-foundation = { version = "0.3", features = [
+  "NSObject",
+  "NSString",
+  "NSURL",
+  "NSDictionary",
+  "NSValue",
+  "NSError",
+] }
+objc2-av-foundation = "0.3"
+tauri-plugin-dialog = "2.7.1"
+objc2-app-kit = "0.3.2"
+block2 = "0.6.2"
+dirs = "6.0.0"
+
+[profile.dev]
+incremental = true
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+opt-level = "s"
+lto = true
+strip = true
