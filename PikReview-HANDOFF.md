@@ -187,6 +187,7 @@ Phase 0 — project fork and rename only. Do not start Phase 1 in this session.
 - `npm run tauri build -- --bundles app`: PASS.
 - Source regression scan: PASS; no forbidden native video attachment symbols found.
 - Binary string regression scan: PASS for project-side forbidden symbols.
+- Note: a broad scan that includes `src-tauri/target` may find `AVPlayerLayer` inside generated third-party `objc2-av-foundation` build metadata. That is expected dependency output, not project-side source usage or native view attachment regression.
 
 ### Laptop / M4 Continuation
 
