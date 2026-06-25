@@ -202,3 +202,41 @@ npm run tauri build -- --bundles app
 ### Next Recommended Step
 
 - Start Phase 1 only after reading `PikReview-PLAN.md` and `PikReview-TASKS.md`: build the Review shell UI while preserving the current audio-only playback foundation and avoiding `AVPlayerView`, `AVPlayerLayer`, `ns_window`, `content_view_ptr`, `get_webview_window`, and `AVKit`.
+
+## 2026-06-25 — Phase 1–6 Final Validation Checkpoint
+
+### Completed Phases
+
+| Phase | Scope | Status |
+|---|---|---|
+| Phase 0 | Fork, rename, git init, build, push | ✅ DONE |
+| Phase 1 | Review shell UI — SpeakerRoom, NotesPanel, PlayerBar, Transport, hotkeys | ✅ DONE |
+| Phase 2 | SQLite schema (projects/versions/notes) + CRUD backend commands | ✅ DONE |
+| Phase 3 | notesStore connects backend; auto-create project/version on play | ✅ DONE |
+| Phase 4 | V1/V2 note compare; resolved_in_version_id; Done/OK states; note filters | ✅ DONE |
+| Phase 5 | CSV / Text / Markdown export commands; clipboard copy; "Copied!" toast | ✅ DONE |
+| Phase 6 | Solo/Mute; Group selection; meter glow; peak blink red | ✅ DONE |
+
+### Final Build Results
+
+- `cargo check`: **PASS** (0.24s, 0 errors)
+- `npm run build`: **PASS** (vite 6.4.3, 0 errors)
+- `npm run tauri build -- --bundles app`: **PASS** (Rust release 51.56s)
+- Built app: `src-tauri/target/release/bundle/macos/Pik Review.app`
+
+### Key Source Files
+
+| File | Purpose |
+|---|---|
+| `src-tauri/src/database/mod.rs` | SQLite schema + all CRUD commands (433 lines) |
+| `src-tauri/src/lib.rs` | Tauri command registration (601 lines) |
+| `src/stores/notesStore.ts` | Frontend note state + Tauri invoke wrappers (109 lines) |
+| `src/components/NotesPanel.tsx` | Full notes UI with export + filter (308 lines) |
+| `src/components/SpeakerRoom.tsx` | 7.1.4 speaker viz + S/M/group + meter glow (252 lines) |
+| `src/components/PlayerBar.tsx` | Transport + timeline + timecode notes (426 lines) |
+| `src/App.tsx` | Main app shell wiring Phase 1–6 (419 lines) |
+
+### Next Steps (Post Phase 6)
+
+- Manual smoke test: load an Atmos file, create notes at timecodes, switch V1→V2, resolve notes, export CSV
+- Phase 7 candidates: speaker label localisation, note export PDF, timecode offset calibration
