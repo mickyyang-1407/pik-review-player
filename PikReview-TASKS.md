@@ -19,13 +19,13 @@
 | DONE | Push to GitHub | Pushed `main` to `git@github.com:mickyyang-1407/pik-review-player.git`; commit `65e51dfa5b1cce9f01ac2d08e7a556f080aed5ca`. |
 | DONE | Update global status | Updated `/Users/mickyyang/STATUS.md` with Phase 0 results and laptop handoff notes. |
 
-## Future Planning Only — Do Not Implement In Phase 0
+## Completed Phases 1–6
 
 | Phase | Status | Scope |
 | --- | --- | --- |
-| Phase 1 | FUTURE | Review shell UI: speaker room, professional transport/timeline, right notes panel. |
-| Phase 2 | FUTURE | Project / Version / Note SQLite schema and workflow. |
-| Phase 3 | FUTURE | Hotkeys, timeline note creation, note seek, playback highlight. |
-| Phase 4 | FUTURE | V1/V2 version review, Done/OK states, note filters. |
-| Phase 5 | FUTURE | CSV, plain text, and Markdown export. |
-| Phase 6 | FUTURE | 7.1.4 speaker room visualization with meter glow and solo/mute. |
+| Phase 1 | DONE | Review shell UI: speaker room, professional transport/timeline, right notes panel. |
+| Phase 2 | DONE | Project / Version / Note SQLite schema and workflow. |
+| Phase 3 | DONE | Hotkeys, timeline note creation, note seek, playback highlight. |
+| Phase 4 | DONE | V1/V2 version review, Done/OK states, note filters. |
+| Phase 5 | DONE | CSV, plain text, and Markdown export. |
+| Phase 6 | DONE | 7.1.4 speaker room visualization with meter glow and solo/mute. |
