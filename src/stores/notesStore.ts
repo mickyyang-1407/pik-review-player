@@ -66,29 +66,27 @@ export async function addNote(projectId: number, createdInVersionId: number | nu
 }
 
 export async function updateNoteStatus(id: number, status: Note['status']) {
-  // Optimistic update
-  setNotes(prev => prev.map(n => n.id === id ? { ...n, status } : n));
   try {
     await invoke('review_update_note_status', { id, status });
+    setNotes(prev => prev.map(n => n.id === id ? { ...n, status } : n));
   } catch (e) {
     console.warn('Failed to update note status', e);
   }
 }
 
 export async function updateNoteResolvedIn(id: number, resolvedInVersionId: number | null) {
-  setNotes(prev => prev.map(n => n.id === id ? { ...n, resolvedInVersionId } : n));
   try {
     await invoke('review_update_note_resolved_in', { id, resolvedInVersionId });
+    setNotes(prev => prev.map(n => n.id === id ? { ...n, resolvedInVersionId } : n));
   } catch (e) {
     console.warn('Failed to update note resolved in', e);
   }
 }
 
 export async function deleteNote(id: number) {
-  // Optimistic update
-  setNotes(prev => prev.filter(n => n.id !== id));
   try {
     await invoke('review_delete_note', { id });
+    setNotes(prev => prev.filter(n => n.id !== id));
   } catch (e) {
     console.warn('Failed to delete note', e);
   }

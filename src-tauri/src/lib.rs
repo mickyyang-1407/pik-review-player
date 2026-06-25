@@ -448,6 +448,7 @@ fn review_export_csv(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Re
 fn review_export_text(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<String, String> {
     let project = db.get_project(project_id).map_err(|e| e.to_string())?;
     let notes = db.get_notes(project_id).map_err(|e| e.to_string())?;
+    let versions = db.get_versions(project_id).map_err(|e| e.to_string())?;
     
     let mut txt = String::new();
     txt.push_str(&format!("Project: {} ({})\n\n", project.title, project.created_at));
@@ -456,7 +457,18 @@ fn review_export_text(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> R
     if !general_notes.is_empty() {
         txt.push_str("General Notes:\n");
         for note in general_notes {
-            txt.push_str(&format!("- {} ({}) [{}]\n", note.body, note.author_role, note.status));
+            let created_label = note.created_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let resolved_label = note.resolved_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let version_info = match (!created_label.is_empty(), !resolved_label.is_empty()) {
+                (true, true) => format!("{} → {}", created_label, resolved_label),
+                (true, false) => created_label.to_string(),
+                _ => String::new(),
+            };
+            if !version_info.is_empty() {
+                txt.push_str(&format!("- {} ({}) [{}] ({})\n", note.body, note.author_role, note.status, version_info));
+            } else {
+                txt.push_str(&format!("- {} ({}) [{}]\n", note.body, note.author_role, note.status));
+            }
         }
         txt.push_str("\n");
     }
@@ -470,7 +482,18 @@ fn review_export_text(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> R
             let minutes = total_seconds / 60;
             let seconds = total_seconds % 60;
             let milli = ((ms % 1000.0) / 10.0) as u64;
-            txt.push_str(&format!("[{:02}:{:02}.{:02}] {} ({}) [{}]\n", minutes, seconds, milli, note.body, note.author_role, note.status));
+            let created_label = note.created_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let resolved_label = note.resolved_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let version_info = match (!created_label.is_empty(), !resolved_label.is_empty()) {
+                (true, true) => format!("{} → {}", created_label, resolved_label),
+                (true, false) => created_label.to_string(),
+                _ => String::new(),
+            };
+            if !version_info.is_empty() {
+                txt.push_str(&format!("[{:02}:{:02}.{:02}] {} ({}) [{}] ({})\n", minutes, seconds, milli, note.body, note.author_role, note.status, version_info));
+            } else {
+                txt.push_str(&format!("[{:02}:{:02}.{:02}] {} ({}) [{}]\n", minutes, seconds, milli, note.body, note.author_role, note.status));
+            }
         }
     }
     
@@ -481,6 +504,7 @@ fn review_export_text(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> R
 fn review_export_markdown(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<String, String> {
     let project = db.get_project(project_id).map_err(|e| e.to_string())?;
     let notes = db.get_notes(project_id).map_err(|e| e.to_string())?;
+    let versions = db.get_versions(project_id).map_err(|e| e.to_string())?;
     
     let mut md = String::new();
     md.push_str(&format!("# Project: {}\n\n", project.title));
@@ -489,7 +513,14 @@ fn review_export_markdown(project_id: i64, db: tauri::State<'_, Arc<Database>>) 
     if !general_notes.is_empty() {
         md.push_str("## General Notes\n");
         for note in general_notes {
-            md.push_str(&format!(" - {}\n", note.body));
+            let created_label = note.created_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let resolved_label = note.resolved_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let version_info = match (!created_label.is_empty(), !resolved_label.is_empty()) {
+                (true, true) => format!(" ({} → {})", created_label, resolved_label),
+                (true, false) => format!(" ({})", created_label),
+                _ => String::new(),
+            };
+            md.push_str(&format!(" - {}{}\n", note.body, version_info));
         }
         md.push_str("\n");
     }
@@ -497,16 +528,22 @@ fn review_export_markdown(project_id: i64, db: tauri::State<'_, Arc<Database>>) 
     let timecoded_notes: Vec<_> = notes.iter().filter(|n| n.timecode_ms.is_some()).collect();
     if !timecoded_notes.is_empty() {
         md.push_str("## Timecoded Notes\n");
-        md.push_str("| Timecode | Note | Author | Status |\n");
-        md.push_str("| --- | --- | --- | --- |\n");
+        md.push_str("| Timecode | Note | Author | Status | Version |\n");
+        md.push_str("| --- | --- | --- | --- | --- |\n");
         for note in timecoded_notes {
             let ms = note.timecode_ms.unwrap();
             let total_seconds = (ms / 1000.0) as u64;
             let minutes = total_seconds / 60;
             let seconds = total_seconds % 60;
             let milli = ((ms % 1000.0) / 10.0) as u64;
-            
-            md.push_str(&format!("| {:02}:{:02}.{:02} | {} | {} | {} |\n", minutes, seconds, milli, note.body.replace("\n", " "), note.author_role, note.status));
+            let created_label = note.created_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let resolved_label = note.resolved_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+            let version_info = match (!created_label.is_empty(), !resolved_label.is_empty()) {
+                (true, true) => format!("{} → {}", created_label, resolved_label),
+                (true, false) => created_label.to_string(),
+                _ => String::new(),
+            };
+            md.push_str(&format!("| {:02}:{:02}.{:02} | {} | {} | {} | {} |\n", minutes, seconds, milli, note.body.replace("\n", " "), note.author_role, note.status, version_info));
         }
     }
     

@@ -64,6 +64,7 @@ pub struct Database {
 impl Database {
     pub fn new<P: AsRef<Path>>(db_path: P) -> Result<Self> {
         let conn = Connection::open(db_path)?;
+        conn.execute_batch("PRAGMA foreign_keys = ON;")?;
         conn.execute(
             "CREATE TABLE IF NOT EXISTS tracks (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -293,6 +294,7 @@ impl Database {
 
     pub fn delete_project(&self, id: i64) -> Result<()> {
         let conn = self.conn.lock().unwrap();
+        conn.execute("DELETE FROM notes WHERE project_id = ?1", params![id])?;
         conn.execute("DELETE FROM projects WHERE id = ?1", params![id])?;
         Ok(())
     }
@@ -342,6 +344,8 @@ impl Database {
 
     pub fn delete_version(&self, id: i64) -> Result<()> {
         let conn = self.conn.lock().unwrap();
+        conn.execute("UPDATE notes SET created_in_version_id = NULL WHERE created_in_version_id = ?1", params![id])?;
+        conn.execute("UPDATE notes SET resolved_in_version_id = NULL WHERE resolved_in_version_id = ?1", params![id])?;
         conn.execute("DELETE FROM versions WHERE id = ?1", params![id])?;
         Ok(())
     }

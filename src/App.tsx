@@ -264,7 +264,12 @@ async function loadFile(path: string, autoPlay: boolean = false) {
       // Check if this file is already a version
       let version = existingVersions.find(v => v.filePath === path);
       if (!version) {
-        const versionLabel = `V${existingVersions.length + 1}`;
+        const numbers = existingVersions.map(v => {
+          const match = v.label.match(/^V(\d+)$/);
+          return match ? parseInt(match[1], 10) : 0;
+        });
+        const maxNum = numbers.length > 0 ? Math.max(...numbers) : 0;
+        const versionLabel = `V${maxNum + 1}`;
         version = await invoke<Version>('review_create_version', { 
           projectId: proj.id, 
           label: versionLabel, 
@@ -292,7 +297,12 @@ async function loadFile(path: string, autoPlay: boolean = false) {
     if (!proj || !filePath()) return;
     try {
       const existingVersions = await invoke<Version[]>('review_get_versions', { projectId: proj.id });
-      const versionLabel = `V${existingVersions.length + 1}`;
+      const numbers = existingVersions.map(v => {
+        const match = v.label.match(/^V(\d+)$/);
+        return match ? parseInt(match[1], 10) : 0;
+      });
+      const maxNum = numbers.length > 0 ? Math.max(...numbers) : 0;
+      const versionLabel = `V${maxNum + 1}`;
       const version = await invoke<Version>('review_create_version', { 
         projectId: proj.id, 
         label: versionLabel, 
