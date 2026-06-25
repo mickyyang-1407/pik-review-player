@@ -64,3 +64,15 @@ body {
 .marquee-wrap[data-marquee="true"] .marquee-track {
   animation: marquee 11s linear infinite;
 }
+
+@keyframes blink-red {
+  0%, 100% { background-color: var(--accent-light); box-shadow: 0 0 20px var(--accent); }
+  50% { background-color: #ef4444; box-shadow: 0 0 20px #ef4444; }
+}
+.animate-blink-red { animation: blink-red 0.5s linear infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+.animate-pulse-glow { animation: pulse-glow 0.2s ease-in-out infinite; }

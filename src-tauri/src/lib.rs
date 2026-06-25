@@ -343,6 +343,176 @@ fn playback_set_eq_profile(profile: Option<player::eq::EqProfile>, state: tauri:
     state.set_eq_profile(profile)
 }
 
+
+#[tauri::command]
+fn review_create_project(title: String, client: Option<String>, artist: Option<String>, album: Option<String>, cue: Option<String>, db: tauri::State<'_, Arc<Database>>) -> Result<database::Project, String> {
+    db.create_project(&title, client.as_deref(), artist.as_deref(), album.as_deref(), cue.as_deref()).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_get_project(id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<database::Project, String> {
+    db.get_project(id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_list_projects(db: tauri::State<'_, Arc<Database>>) -> Result<Vec<database::Project>, String> {
+    db.list_projects().map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_update_project(id: i64, title: Option<String>, client: Option<String>, artist: Option<String>, album: Option<String>, cue: Option<String>, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.update_project(id, title.as_deref(), client.as_deref(), artist.as_deref(), album.as_deref(), cue.as_deref()).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_delete_project(id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.delete_project(id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_create_version(project_id: i64, label: String, file_path: String, duration: Option<f64>, checksum: Option<String>, db: tauri::State<'_, Arc<Database>>) -> Result<database::Version, String> {
+    db.create_version(project_id, &label, &file_path, duration, checksum.as_deref()).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_get_versions(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<Vec<database::Version>, String> {
+    db.get_versions(project_id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_delete_version(id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.delete_version(id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_create_note(project_id: i64, created_in_version_id: Option<i64>, timecode_ms: Option<f64>, body: String, author_role: Option<String>, status: Option<String>, db: tauri::State<'_, Arc<Database>>) -> Result<database::ReviewNote, String> {
+    db.create_note(project_id, created_in_version_id, timecode_ms, &body, author_role.as_deref(), status.as_deref()).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_get_notes(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<Vec<database::ReviewNote>, String> {
+    db.get_notes(project_id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_update_note_status(id: i64, status: String, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.update_note_status(id, &status).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_update_note_body(id: i64, body: String, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.update_note_body(id, &body).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_delete_note(id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.delete_note(id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_update_note_resolved_in(id: i64, resolved_in_version_id: Option<i64>, db: tauri::State<'_, Arc<Database>>) -> Result<(), String> {
+    db.update_note_resolved_in(id, resolved_in_version_id).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn review_export_csv(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<String, String> {
+    let notes = db.get_notes(project_id).map_err(|e| e.to_string())?;
+    let versions = db.get_versions(project_id).map_err(|e| e.to_string())?;
+    
+    let mut csv = String::new();
+    csv.push_str("Timecode,Body,Status,Author,Created In Version,Resolved In Version,Created At\n");
+    
+    for note in notes {
+        let created_label = note.created_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+        let resolved_label = note.resolved_in_version_id.and_then(|id| versions.iter().find(|v| v.id == id)).map(|v| v.label.as_str()).unwrap_or("");
+        
+        let timecode_str = if let Some(ms) = note.timecode_ms {
+            let total_seconds = (ms / 1000.0) as u64;
+            let minutes = total_seconds / 60;
+            let seconds = total_seconds % 60;
+            let milli = ((ms % 1000.0) / 10.0) as u64;
+            format!("{:02}:{:02}.{:02}", minutes, seconds, milli)
+        } else {
+            String::new()
+        };
+        
+        let body = note.body.replace("\"", "\"\"");
+        csv.push_str(&format!("\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"\n", 
+            timecode_str, body, note.status, note.author_role, created_label, resolved_label, note.created_at));
+    }
+    
+    Ok(csv)
+}
+
+#[tauri::command]
+fn review_export_text(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<String, String> {
+    let project = db.get_project(project_id).map_err(|e| e.to_string())?;
+    let notes = db.get_notes(project_id).map_err(|e| e.to_string())?;
+    
+    let mut txt = String::new();
+    txt.push_str(&format!("Project: {} ({})\n\n", project.title, project.created_at));
+    
+    let general_notes: Vec<_> = notes.iter().filter(|n| n.timecode_ms.is_none()).collect();
+    if !general_notes.is_empty() {
+        txt.push_str("General Notes:\n");
+        for note in general_notes {
+            txt.push_str(&format!("- {} ({}) [{}]\n", note.body, note.author_role, note.status));
+        }
+        txt.push_str("\n");
+    }
+    
+    let timecoded_notes: Vec<_> = notes.iter().filter(|n| n.timecode_ms.is_some()).collect();
+    if !timecoded_notes.is_empty() {
+        txt.push_str("Timecoded Notes:\n");
+        for note in timecoded_notes {
+            let ms = note.timecode_ms.unwrap();
+            let total_seconds = (ms / 1000.0) as u64;
+            let minutes = total_seconds / 60;
+            let seconds = total_seconds % 60;
+            let milli = ((ms % 1000.0) / 10.0) as u64;
+            txt.push_str(&format!("[{:02}:{:02}.{:02}] {} ({}) [{}]\n", minutes, seconds, milli, note.body, note.author_role, note.status));
+        }
+    }
+    
+    Ok(txt)
+}
+
+#[tauri::command]
+fn review_export_markdown(project_id: i64, db: tauri::State<'_, Arc<Database>>) -> Result<String, String> {
+    let project = db.get_project(project_id).map_err(|e| e.to_string())?;
+    let notes = db.get_notes(project_id).map_err(|e| e.to_string())?;
+    
+    let mut md = String::new();
+    md.push_str(&format!("# Project: {}\n\n", project.title));
+    
+    let general_notes: Vec<_> = notes.iter().filter(|n| n.timecode_ms.is_none()).collect();
+    if !general_notes.is_empty() {
+        md.push_str("## General Notes\n");
+        for note in general_notes {
+            md.push_str(&format!(" - {}\n", note.body));
+        }
+        md.push_str("\n");
+    }
+    
+    let timecoded_notes: Vec<_> = notes.iter().filter(|n| n.timecode_ms.is_some()).collect();
+    if !timecoded_notes.is_empty() {
+        md.push_str("## Timecoded Notes\n");
+        md.push_str("| Timecode | Note | Author | Status |\n");
+        md.push_str("| --- | --- | --- | --- |\n");
+        for note in timecoded_notes {
+            let ms = note.timecode_ms.unwrap();
+            let total_seconds = (ms / 1000.0) as u64;
+            let minutes = total_seconds / 60;
+            let seconds = total_seconds % 60;
+            let milli = ((ms % 1000.0) / 10.0) as u64;
+            
+            md.push_str(&format!("| {:02}:{:02}.{:02} | {} | {} | {} |\n", minutes, seconds, milli, note.body.replace("\n", " "), note.author_role, note.status));
+        }
+    }
+    
+    Ok(md)
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -381,6 +551,23 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            review_create_project,
+            review_get_project,
+            review_list_projects,
+            review_update_project,
+            review_delete_project,
+            review_create_version,
+            review_get_versions,
+            review_delete_version,
+            review_create_note,
+            review_get_notes,
+            review_update_note_status,
+            review_update_note_body,
+            review_delete_note,
+            review_update_note_resolved_in,
+            review_export_csv,
+            review_export_text,
+            review_export_markdown,
             player_load,
             player_toggle_play_pause,
             player_stop,
